@@ -20,7 +20,10 @@ def cook(amt):
             'cm-f-palyk': '',#Phone Number
             'cm-fo-palyu': '',#<-- SHOE SIZE CODE
         }
-
+        proxies = {
+          #'http': 'http://10.10.1.10:3128', format should be like this
+          #'http': 'socks5://user:pass@host:port',
+        }
         '''
             USE THESE SIZE CODES FOR cm-fo-palyu
                     1931853 = US 8
@@ -38,9 +41,9 @@ def cook(amt):
                     1931621 = United Kingdom
                     1931622 = United States of America
         '''
-        s.post(url, data = payload);
+        s.post(url, data=payload, proxies=proxies);
         print('Created {}/{} Entries'.format(i,amt))
-        print(3)
+        time.sleep(2)
      print("Ok now lets wait for all the entries to process!");
      time.sleep(30);
      email = '' #your email
@@ -74,5 +77,5 @@ def cook(amt):
         time.sleep(5)
         driver.switch_to.window(driver.window_handles[0])
         time.sleep(5)
-amt = input('How many entres?  ')
+amt = input('How many entries?  ')
 cook(int(amt))
